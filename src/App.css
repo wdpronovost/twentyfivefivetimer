@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: lightblue;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+}
+
+#container {
+  display: grid;
+  grid-template-areas:
+    "t t t"
+    "b m s"
+    "f f f";
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  #container {
+    grid-template-areas:
+      't t'
+      'm m'
+      'b s'
+      'f f';
+  }
+}
+
+#title-box {
+  grid-area: t;
+  text-align: center;
+  user-select: none;
+}
+
+#footer {
+  grid-area: f;
+  text-align: center;
+  font-weight: 100;
+  user-select: none;
+}
+
+#break-box, #session-box {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 25% 20% 30% 25%;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  background-color: rgba(244,244,244,.4);
+  position: relative;
+  width: 115px;
+  height: 115px;
+  padding: .5rem;
+  border-radius: 50%;
+  border: 2px solid white;
+  gap: .1em;
+}
+
+#break-box {
+  grid-area: b;
+}
+
+#session-box {
+  grid-area: s
+}
+
+#break-length, #session-length {
+  user-select: none;
+}
+
+#break-label, #session-label {
+  font-size: 11px;
+  text-align: center;
+  font-weight: 100;
+  user-select: none;
+}
+
+#break-box > svg, #session-box > svg {
+  font-weight: 100;
+  color: rgba(78,78,78,.9);
+  cursor: pointer;
+}
+
+
+#timer-box {
+  grid-area: m;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 10% 70% 20%;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  background-color: rgba(244,244,244,.4);
+  position: relative;
+  width: 252px;
+  height: 252px;
+  padding: 3rem;
+  border-radius: 50%;
+  border: 4px solid white;
+  align-content: center;
+  margin: auto;
+}
+
+#timer-label, #time-left {
+  user-select: none;
+}
+
+#timer-box > svg {
+  position: absolute;
+  padding: 5px;
+  transform: rotate(-90deg);
+}
+
+.defaultCircle {
+  fill: none;
+  stroke: white;
+}
+
+@keyframes work {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 754;
+  }
+}
+
+@keyframes break {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 754;
+  }
+}
+
+#time-left {
+  grid-row: 2/4;
+  font-size: 2rem;
+  font-weight: 100;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  gap: .1em;
+}
+
+#timer-control-box {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+/*   align-content: center; */
+  flex-direction: row;
+  flex-wrap: nowrap;
+/*   width: 100%; */
+/*   min-height: 30px; */
+  padding: 0;
+  margin: 0;
+  gap: 1em;
+}
+
+#timer-control-box > svg {
+/*   display: block !important; */
+/*   justify-content: center;
+  align-items: center;
+  align-self: center;
+  justify-self: center; */
+  font-weight: 100;
+  color: rgba(78,78,78,.9);
+  z-index:3;
+  cursor: pointer;
+}
+
+#hours, #minutes, #seconds, #milliseconds {
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+}
+
+#hours > span, #minutes > span, #seconds > span, #milliseconds > span {
+  font-size: 8px;
+  text-align: center;
+  user-select: none;
+}
+
+.disable {
+  pointer-events: none;
+}
